@@ -4,76 +4,82 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CALCULATOR</title>
+
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
+                @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
 
-body{
-    width: 100%;
-    height: 1oovh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(45de, #0a0a0a, #3a4452);
-}
+        body{
+            width: 100%;
+            height: 1oovh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(45de, #0a0a0a, #3a4452);
+        }
 
-.calculator{
-    border: 1px solid #717317;
-    padding: 20px;
-    border-radius: 16px;
-    background: #3a4452;
-    box-shadow: 0px 3px 15px rgba(113, 115, 119, 0.5);
-}
+        .calculator{
+            width: 375px;
+            margin: 20px;
+            border: 1px solid #717317;
+            padding: 20px;
+            border-radius: 16px;
+            background: #3a4452;
+            box-shadow: 0px 3px 15px rgba(113, 115, 119, 0.5);
+        }
 
-input{
-    width: 320px;
-    border: none;
-    padding: 24px;
-    margin: 10px;
-    background: transparent;
-    box-shadow: 0px 3px 15px rgbs(84 84 84 0.1);
-    font-size: 50px;
-    text-align: right;
-    cursor: pointer;
-    color: #ffffff;
+        #inputBox{
+            width: 100%;
+            border-radius: 8px;
+            padding: 10px;
+            margin: 10px auto;
+            height: 100px;
+            border: none;
+            background: transparent;
+            box-shadow: 0px 3px 15px rgbs(84 84 84 0.1);
+            font-size: 50px;
+            text-align: right;
+            cursor: pointer;
+            color: #000000;
+            background-color: #bdbfc1;
+            box-sizing: border-box;
+            overflow: scroll;
 
-}
+        }
 
-input::placeholder{
-    color: #ffffff;    
-}
-button{
-    border: none;
-    width: 60px;
-    height: 60px;
-    margin: 10px;
-    border-radius: 50%;
-    background: transparent;
-    color: #ffffff;
-    font-size: 25px;
-    box-shadow: -8px -8px 15px rgba(255, 255, 255, 0.1);
-    cursor: pointer;
-}
+       
+        button{
+            border: none;
+            width: 60px;
+            height: 60px;
+            margin: 10px;
+            border-radius: 50%;
+            background: transparent;
+            color: #ffffff;
+            font-size: 25px;
+            box-shadow: -8px -8px 15px rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+        }
 
-.equalBtn{
-    background-color: #fb7c14;
-}
+        .equalBtn{
+            background-color: #fb7c14;
+        }
 
-.operator{
-    color: #ee0acc;
-}
+        .operator{
+            color: #ee0acc;
+        }
 
     </style>
 </head>
 <body>
 
     <div class="calculator">
-        <input type="text" placeholder="0" id="inputBox">
+        <p id="inputBox"></p>
         <div>
             <button class="operator">AC</button>
             <button class="operator">DEL</button>
@@ -108,36 +114,36 @@ button{
 
     <script>
         let input = document.getElementById('inputBox');
-let buttons = document.querySelectorAll
-('button');
+        let buttons = document.querySelectorAll
+        ('button');
 
-let string = "";
-let arr = Array.from(buttons);
-arr.forEach(button =>{
-    button.addEventListener('click', (e) =>{
-       if(e.target.innerHTML == '='){
-        string = eval(string);
-        input.value = string;
-       }
+        let string = "";
+        let arr = Array.from(buttons);
+        arr.forEach(button =>{
+            button.addEventListener('click', (e) =>{
+            if(e.target.innerHTML == '='){
+                string = eval(string);
+                input.innerHTML = string;
+            }
 
-       else if(e.target.innerHTML == 'AC'){
-        string = "";
-        input.value = string;
+            else if(e.target.innerHTML == 'AC'){
+                string = "";
+                input.innerHTML = string;
 
-       }
+            }
 
-       else if(e.target.innerHTML == 'DEL'){
-        string = string.substring(0, string.length-1);
-        input.value = string
-       }
+            else if(e.target.innerHTML == 'DEL'){
+                string = string.substring(0, string.length-1);
+                input.innerHTML = string
+            }
 
-       else{
-        string += e.target.innerHTML;
-        input.value = string;
-       }
+            else{
+                string += e.target.innerHTML;
+                input.innerHTML = string;
+            }
 
-    })
-})
+            })
+        })
     </script>
 </body>
 </html>
